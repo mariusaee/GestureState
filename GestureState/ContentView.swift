@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @GestureState var dragAmount = CGSize.zero
+    
+    @GestureState private var dragAmount = CGSize.zero
     
     var body: some View {
         Image(systemName: "star")
@@ -18,6 +19,7 @@ struct ContentView: View {
                     state = value.translation
                 }
             )
+            .animation(Animation.linear, value: dragAmount)
     }
 }
 
