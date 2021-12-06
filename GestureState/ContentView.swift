@@ -13,10 +13,10 @@ struct ContentView: View {
     @GestureState private var isLongPressed = false
     
     var body: some View {
-        VStack {
-            Image(systemName: "star.fill")
+        VStack(spacing: 30) {
+            Image(systemName: "circle.fill")
                 .resizable()
-                .frame(width: 100, height: 100)
+                .frame(width: 150, height: 150)
                 .offset(dragAmount)
                 .gesture(
                     DragGesture().updating($dragAmount) { value, state, transaction in
@@ -25,10 +25,10 @@ struct ContentView: View {
                 )
                 .animation(Animation.linear, value: dragAmount)
             
-            Image(systemName: "circle.fill")
+            Image(systemName: "triangle.fill")
                 .resizable()
-                .frame(width: 100, height: 100)
-                .foregroundColor(isLongPressed ? .blue : .red)
+                .frame(width: 150, height: 150)
+                .foregroundColor(isLongPressed ? .red : .blue)
                 .scaleEffect(isLongPressed ? 2 : 1)
                 .gesture(
                     LongPressGesture().updating($isLongPressed, body: { value, state, transaction in
@@ -36,6 +36,9 @@ struct ContentView: View {
                     })
                 )
                 .animation(.spring(), value: isLongPressed)
+            Image(systemName: "square.fill")
+                .resizable()
+                .frame(width: 150, height: 150)
         }
     }
 }
