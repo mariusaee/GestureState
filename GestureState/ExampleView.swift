@@ -10,6 +10,7 @@ import SwiftUI
 struct ExampleView: View {
     
     @State private var position = CGSize.zero
+    @GestureState private var trianglePosition = CGSize.zero
     
     var body: some View {
         VStack(spacing: 30) {
@@ -32,6 +33,14 @@ struct ExampleView: View {
             Image(systemName: "triangle.fill")
                 .resizable()
                 .frame(width: 150, height: 150)
+                .offset(trianglePosition)
+                .gesture(
+                    DragGesture()
+                        .updating($trianglePosition, body: { value, state, transaction in
+                            state = value.translation
+                        })
+                )
+                .animation(.linear, value: trianglePosition)
             
             Image(systemName: "square.fill")
                 .resizable()

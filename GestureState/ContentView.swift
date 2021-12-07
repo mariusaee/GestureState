@@ -22,7 +22,8 @@ struct ContentView: View {
                 // Ниже пишем код
                 .offset(dragAmount)
                 .gesture(
-                    DragGesture().updating($dragAmount) { value, state, transaction in
+                    DragGesture()
+                        .updating($dragAmount) { value, state, transaction in
                         state = value.translation
                     }
                 )
