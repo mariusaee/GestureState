@@ -19,6 +19,7 @@ struct ContentView: View {
                 .resizable()
                 .frame(width: 150, height: 150)
                 .foregroundColor(.red)
+                // Ниже пишем код
                 .offset(dragAmount)
                 .gesture(
                     DragGesture().updating($dragAmount) { value, state, transaction in
@@ -30,6 +31,7 @@ struct ContentView: View {
             Image(systemName: "triangle.fill")
                 .resizable()
                 .frame(width: 150, height: 150)
+                // Ниже пишем код
                 .foregroundColor(isLongPressed ? .red : .blue)
                 .scaleEffect(isLongPressed ? 2 : 1)
                 .gesture(
@@ -43,6 +45,7 @@ struct ContentView: View {
                 .resizable()
                 .frame(width: 150, height: 150)
                 .foregroundColor(.red)
+                // Ниже пишем код
                 .offset(x: position.width, y: position.height)
                 .gesture(
                     DragGesture()
