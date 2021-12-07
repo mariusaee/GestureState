@@ -8,12 +8,26 @@
 import SwiftUI
 
 struct ExampleView: View {
+    
+    @State private var position = CGSize.zero
+    
     var body: some View {
         VStack(spacing: 30) {
             Image(systemName: "circle.fill")
                 .resizable()
                 .frame(width: 150, height: 150)
                 .foregroundColor(.red)
+                .offset(x: position.width, y: position.height)
+                .gesture(
+                    DragGesture()
+                        .onChanged({ value in
+                            position = value.translation
+                        })
+                        .onEnded({ value in
+                            position = .zero
+                        })
+                )
+                .animation(.linear, value: position)
             
             Image(systemName: "triangle.fill")
                 .resizable()
